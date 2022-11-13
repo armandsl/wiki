@@ -1,7 +1,7 @@
 # ====================
 # --- Build Assets ---
 # ====================
-FROM node:10.16-alpine AS assets
+FROM node:10.16-alpine@sha256:77c898d0da5e7bfb6e05c9a64de136ba4e03889a72f3c298e95df822a38f450d AS assets
 
 RUN apk add yarn g++ make python --no-cache
 
@@ -23,7 +23,7 @@ RUN yarn --production --frozen-lockfile --non-interactive
 # ===============
 # --- Release ---
 # ===============
-FROM node:10.16-alpine
+FROM node:10.16-alpine@sha256:77c898d0da5e7bfb6e05c9a64de136ba4e03889a72f3c298e95df822a38f450d
 LABEL maintainer="requarks.io"
 
 RUN apk add bash curl git openssh gnupg sqlite --no-cache && \
